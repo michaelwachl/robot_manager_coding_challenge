@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<style>
+table, td {
+  border: 1px solid black;
+}
+</style>
+<body>
+
+    <table style="width:100%" id="robots">
+    <tr>
+        <th>x</th>
+        <th>y</th>
+        <th>vehicle_id</th>
+        <th>driving</th>
+        <th>battery</th>
+        <th>abort</th>
+        <th>order_id</th>
+    </tr>
+    {% for item in items %}
+        <tr>
+            <td>{{item[0]}}</td>
+            <td>{{item[1]}}</td>
+            <td>{{item[2]}}</td>
+            <td>{{item[3]}}</td>
+            <td>{{item[4]}}</td>
+            <td>{{item[5]}}</td>
+            <td>{{item[6]}}</td>
+        </tr>
+    {% end %}
+    </table>
+
+
+    <script>
+        var ws = new WebSocket("ws://localhost:8888/websocket");
+
+        ws.onmessage = function(evt) {
+        insert(evt.data)
+        };
+    </script>
+
+    <script>
+    function insert(elements) {
+      var obj = JSON.parse(elements);
+      var table = document.getElementById("robots");
+      var row = table.insertRow();
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+      var cell3 = row.insertCell(2);
+      var cell4 = row.insertCell(3);
+      var cell5 = row.insertCell(4);
+      var cell6 = row.insertCell(5);
+      var cell7 = row.insertCell(6);
+      cell1.innerHTML = obj.position.x;
+      cell2.innerHTML = obj.position.y;
+      cell3.innerHTML = obj.vehicle_id;
+      cell4.innerHTML = obj.driving;
+      cell5.innerHTML = obj.battery;
+      cell6.innerHTML = obj.abort;
+      cell7.innerHTML = obj.order_id;
+    }
+    </script>
+
+</body>
+ </html>
