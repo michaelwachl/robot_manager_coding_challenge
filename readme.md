@@ -17,7 +17,7 @@ Hint: The project is developed with **python 3.5**
   
 I used Anaconda and Pycharm to program and run this challenge. My python version is 3.5
 
-##Structure and Functionality
+## Structure and Functionality
 My solution consits of 3 files:
 
 **mqtt_client.py:** Class for MQTTClient creation, subscribes to robot topic and provides callback functions for
@@ -39,7 +39,7 @@ message from the FleetListener.
 
 The two files in the class_templates folder are not used, but can be used for templates for future projects. 
 
-##How to run
+## How to run
 Use Pycharm or local machine and run the robot.py and server.py scripts
 
 
